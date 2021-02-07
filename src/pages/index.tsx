@@ -7,9 +7,9 @@ const IndexPage = () => {
   return (
     <PageLayout title="Home">
       <picture className="profile-picture">
-        <source media="(min-width: 720px)" srcSet="images/profile_l.jpg" />
-        <source media="(min-width: 420px)" srcSet="images/profile_m.jpg" />
-        <img src="images/profile_s.jpg" alt="Profile Picture of Luke Codewalker" />
+        <source media="(min-width: 720px)" srcSet="images/profile_l.JPG" />
+        <source media="(min-width: 420px)" srcSet="images/profile_m.JPG" />
+        <img src="images/profile_s.JPG" alt="Profile Picture of Luke Codewalker" />
       </picture>
       <main>
         <h1><ScramblingMarkup tagName="h1" innerText="Hello World"></ScramblingMarkup></h1>
