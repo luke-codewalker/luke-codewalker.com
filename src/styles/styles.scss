@@ -27,7 +27,9 @@ body {
 .profile-picture {
     display: block;
     width: 50%;
+    min-height: 120px;
     min-width: 120px;
+    aspect-ratio: 1 / 1;
     margin: 0 auto;
 }
 
