@@ -4,6 +4,7 @@ import profilePicLarge from "../images/profile_l.jpg";
 import profilePicMedium from "../images/profile_m.jpg";
 import profilePicSmall from "../images/profile_s.jpg";
 import ScramblingMarkup from "../components/scrambling-markup";
+import "./index.scss";
 
 const IndexPage = () => {
   return (

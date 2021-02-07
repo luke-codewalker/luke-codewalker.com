@@ -1,4 +1,5 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
+import "./scrambling-markup.scss";
 
 type ScramblingMarkupProps = {
     tagName: string;
@@ -8,6 +9,7 @@ type ScramblingMarkupProps = {
 const ScramblingMarkup: FC<ScramblingMarkupProps> = ({ tagName, innerText }) => {
     const [text, setText] = useState(innerText);
     const [times, setTimes] = useState(10);
+    const markupNode = useRef(null);
 
     useEffect(() => {
         if (times > 0) {
@@ -25,11 +27,14 @@ const ScramblingMarkup: FC<ScramblingMarkupProps> = ({ tagName, innerText }) => 
     }, [times]);
 
     const clickHandler = () => {
+        markupNode.current.style.animation = 'none';
+        markupNode.current.offsetHeight;
+        markupNode.current.style.animation = '';
         setTimes(10);
     }
 
     return (
-        <span onClick={clickHandler}>
+        <span ref={markupNode} className="scrambling-markup" onClick={clickHandler}>
             <span className="code">&lt;{tagName}&gt;</span>
             {text}
             <span className="code">&lt;/{tagName}&gt;</span>
