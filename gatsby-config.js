@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 module.exports = {
   siteMetadata: {
     title: "luke-codewalker.com",
@@ -6,10 +8,10 @@ module.exports = {
     {
       resolve: "gatsby-source-contentful",
       options: {
-        accessToken: "",
-        spaceId: "",
+        accessToken: process.env.CF_ACCESS_TOKEN,
+        spaceId: process.env.CF_SPACE_ID,
       },
     },
-    "gatsby-plugin-styled-components",
+    `gatsby-plugin-sass`
   ],
 };

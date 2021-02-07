@@ -1,1 +1,28 @@
-{"name":"luke-codewalker.com","version":"1.0.0","private":true,"description":"luke-codewalker.com","author":"Luke Codewalker","keywords":["gatsby"],"scripts":{"develop":"gatsby develop","start":"gatsby develop","build":"gatsby build","serve":"gatsby serve","clean":"gatsby clean"},"dependencies":{"babel-plugin-styled-components":"^1.12.0","gatsby":"^2.31.1","gatsby-plugin-styled-components":"^3.10.0","gatsby-source-contentful":"^4.6.1","react":"^16.13.1","react-dom":"^16.13.1","styled-components":"^5.2.1"}}
+{
+  "name": "luke-codewalker.com",
+  "version": "1.0.0",
+  "private": true,
+  "description": "luke-codewalker.com",
+  "author": "Luke Codewalker",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "gatsby": "^2.31.1",
+    "gatsby-plugin-sass": "^3.2.0",
+    "gatsby-source-contentful": "^4.6.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "sass": "^1.32.6"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
