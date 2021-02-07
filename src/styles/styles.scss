@@ -1,0 +1,120 @@
+html {
+    box-sizing: border-box;
+    background-color: #eee;
+    color: #333;
+    font-size: 18px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+.page {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-picture {
+    display: block;
+    width: 50%;
+    min-width: 120px;
+    margin: 0 auto;
+}
+
+.profile-picture img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-family: monospace;
+    font-size: 1.25rem;
+}
+
+.code {
+    color: #a00000;
+}
+
+ul {
+    padding-left: 1rem;
+}
+
+a {
+    color: #333;
+    position: relative;
+}
+
+a:hover {
+    color: #a00000;
+    text-decoration-color: #a00000;
+}
+
+@media (min-width: 420px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 540px) {
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (min-width: 720px) {
+    html {
+        font-size: 16px;
+    }
+
+    .page {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    main {
+        display: block;
+    }
+
+    .profile-picture {
+        margin: 0 60px 0 0;
+        width: 25%;
+        max-width: 300px;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        background-color: #333;
+        color: #eee;
+    }
+
+    .code {
+        color: #56b6c2;
+    }
+
+    a {
+        color: #eee;
+        position: relative;
+    }
+
+    a:hover {
+        color: #56b6c2;
+        text-decoration-color: #56b6c2;
+    }
+}
