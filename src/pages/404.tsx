@@ -12,10 +12,8 @@ const NotFoundPage = () => {
           <span role="img" aria-label="Pensive emoji">
             😔
         </span>{" "}
-          <br />
-          <br />
-          <Link to="/">Go home</Link>
         </p>
+        <Link to="/">Go home</Link>
       </main>
     </PageLayout>
   )
