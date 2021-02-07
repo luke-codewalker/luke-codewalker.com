@@ -1,8 +1,8 @@
 import * as React from "react"
 import PageLayout from "../layouts/page-layout"
-import profilePicLarge from "../images/profile_l.jpg";
-import profilePicMedium from "../images/profile_m.jpg";
-import profilePicSmall from "../images/profile_s.jpg";
+import profilePicLarge from "/src/images/profile_l.jpg";
+import profilePicMedium from "/src/images/profile_m.jpg";
+import profilePicSmall from "/src/images/profile_s.jpg";
 import ScramblingMarkup from "../components/scrambling-markup";
 import "./index.scss";
 
