@@ -1,4 +1,11 @@
 @import "./fonts";
+@import "./variables";
+
+:root {
+    --text-color: #{$light-text-color};
+    --accent-color: #{$light-accent-color};
+    --bg-color: #{$light-bg-color};
+}
 
 html {
     box-sizing: border-box;
@@ -6,6 +13,7 @@ html {
     font-size: 18px;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
 html,
 body,
 #___gatsby,
@@ -22,36 +30,17 @@ body,
 }
 
 a {
-    color: #333;
+    color: var(--text-color);
     position: relative;
 }
 
 a:hover {
-    color: #a00000;
-    text-decoration-color: #a00000;
+    color: var(--accent-color);
+    text-decoration-color: var(--accent-color);
 }
 
-@media (min-width: 720px) {
+@media (min-width: $desktop) {
     html {
         font-size: 16px;
-    }
-}
-
-.page.dark {
-    background-color: #333;
-    color: #eee;
-
-    .code {
-        color: #56b6c2;
-    }
-
-    a {
-        color: #eee;
-        position: relative;
-    }
-
-    a:hover {
-        color: #56b6c2;
-        text-decoration-color: #56b6c2;
     }
 }
