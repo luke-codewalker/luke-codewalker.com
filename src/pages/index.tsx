@@ -1,9 +1,12 @@
 import * as React from "react"
 import PageLayout from "../layouts/page-layout";
-import ScramblingMarkup from "../components/scrambling-markup";
+import ScramblingMarkup from "../components/scrambling-markup/scrambling-markup";
 import "./index.scss";
+import { PageProps } from "gatsby";
+import { FC } from "react";
+import ContactLinks from "../components/contact-links/contact-links";
 
-const IndexPage = () => {
+const IndexPage: FC<PageProps> = () => {
   return (
     <PageLayout title="Home">
       <picture className="profile-picture">
@@ -14,11 +17,7 @@ const IndexPage = () => {
       <main>
         <h1><ScramblingMarkup tagName="h1" innerText="Hello World"></ScramblingMarkup></h1>
         <p>My name is Luke and I like to code.</p>
-        <ul>
-          <li>Take a look at <a href="https://github.com/luke-codewalker">my code on Github</a></li>
-          <li>You can <a href="https://www.linkedin.com/in/lukas-eschstruth-577847159/">contact me on Linkedin</a></li>
-          <li>Or just <a href="mailto:info@luke-codewalker.com">send me an email</a></li>
-        </ul>
+        <ContactLinks></ContactLinks>
       </main>
     </PageLayout>
   )

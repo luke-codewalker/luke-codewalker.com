@@ -1,3 +1,5 @@
+@import "./fonts";
+
 html {
     box-sizing: border-box;
     background-color: #eee;
@@ -52,10 +54,6 @@ h1 {
 
 .code {
     color: #a00000;
-}
-
-ul {
-    padding-left: 1rem;
 }
 
 a {
