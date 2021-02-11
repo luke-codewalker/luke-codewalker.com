@@ -6,7 +6,7 @@ interface PageLayoutProps {
 }
 
 const PageLayout: FC<PageLayoutProps> = ({ children, title }) => {
-    const [darkThemeActive, setDarkThemeActive] = useState<boolean>(false);
+    const [darkThemeActive, setDarkThemeActive] = useState<boolean>(true);
 
     useEffect(() => {
         if (typeof window === 'undefined') {
