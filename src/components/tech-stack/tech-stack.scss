@@ -1,0 +1,33 @@
+@import "../../styles/variables";
+.tech-stack {
+    .stack {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        margin-bottom: 3rem;
+
+        .tech {
+            margin-right: 1rem;
+
+            $levels: 5;
+
+            @for $i from 1 through $levels {
+                &.level-#{$i} {
+                    font-size: 0.5rem + $i * 0.25rem;
+                }
+            }
+        }
+    }
+
+    @media (min-width: $desktop) {
+        text-align: right;
+        .stack {
+            justify-content: end;
+
+            .tech {
+                margin-right: 0;
+                margin-left: 1rem;
+            }
+        }
+    }
+}

@@ -38,6 +38,22 @@ a:hover {
     text-decoration-color: var(--accent-color);
 }
 
+h2 {
+    font-size: 1rem;
+}
+
+@media (min-width: $phone) {
+    h2 {
+        font-size: 1.25rem;
+    }
+}
+
+@media (min-width: $tablet) {
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
 @media (min-width: $desktop) {
     html {
         font-size: 16px;

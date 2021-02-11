@@ -1,0 +1,11 @@
+@import "../styles//variables";
+
+.grid-container {
+    display: block;
+
+    @media (min-width: $desktop) {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-gap: 60px;
+    }
+}

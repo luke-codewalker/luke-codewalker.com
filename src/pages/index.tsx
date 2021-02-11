@@ -5,13 +5,17 @@ import { PageProps } from "gatsby";
 import { FC } from "react";
 import Hero from "../components/hero/hero";
 import Bio from "../components/bio/bio";
+import TechStack from "../components/tech-stack/tech-stack";
 
 const IndexPage: FC<PageProps> = () => {
   return (
     <PageLayout title="Home">
       <main>
         <Hero></Hero>
-        <Bio></Bio>
+        <div className="grid-container">
+          <TechStack></TechStack>
+          <Bio></Bio>
+        </div>
       </main>
     </PageLayout>
   )

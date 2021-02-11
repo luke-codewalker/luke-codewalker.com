@@ -1,6 +1,7 @@
 import { useStaticQuery, graphql } from "gatsby";
 import { RenderRichTextData, ContentfulRichTextGatsbyReference, renderRichText } from "gatsby-source-contentful/rich-text";
 import React, { FC } from "react";
+import "./bio.scss";
 
 type BioData = {
     allContentfulTextSection: {
@@ -27,7 +28,7 @@ const Bio: FC = () => {
 
     const { heading, body } = data.allContentfulTextSection.nodes[0];
 
-    return <section>
+    return <section className="bio">
         <h2>{heading}</h2>
         {renderRichText(body)}
     </section>
