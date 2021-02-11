@@ -36,6 +36,10 @@ $knob-size: 1em;
         cursor: pointer;
         border-radius: $knob-size;
 
+        @media (min-width: $desktop) {
+            font-size: 1.5rem;
+        }
+
         input {
             display: none;
         }
