@@ -1,0 +1,62 @@
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .profile-picture {
+        display: block;
+        width: 50%;
+        min-height: 120px;
+        min-width: 120px;
+        aspect-ratio: 1 / 1;
+        margin: 0 auto;
+    }
+
+    .profile-picture img {
+        width: 100%;
+        border-radius: 50%;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1 {
+        font-family: monospace;
+        font-size: 1.25rem;
+        cursor: pointer;
+
+        .code {
+            color: #a00000;
+        }
+    }
+
+    @media (min-width: 420px) {
+        h1 {
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (min-width: 540px) {
+        h1 {
+            font-size: 2rem;
+        }
+    }
+
+    @media (min-width: 720px) {
+        flex-direction: row;
+        justify-content: center;
+
+        .info {
+            display: block;
+        }
+
+        .profile-picture {
+            margin: 0 60px 0 0;
+            width: 25%;
+            max-width: 300px;
+        }
+    }
+}

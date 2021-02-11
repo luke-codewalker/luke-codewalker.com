@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import "./page-layout.scss";
 
 interface PageLayoutProps {
     title: string;

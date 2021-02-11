@@ -1,11 +1,12 @@
 .contact-list {
+    margin: 0;
     padding: 1rem 0;
     list-style: none;
 
     li {
         display: flex;
         align-items: center;
-        margin: 1rem 0;
+        margin-bottom: 1rem;
 
         i {
             font-size: 1.5em;
