@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 .hero {
     display: flex;
     flex-direction: column;
@@ -29,23 +31,23 @@
         cursor: pointer;
 
         .code {
-            color: #a00000;
+            color: var(--accent-color);
         }
     }
 
-    @media (min-width: 420px) {
+    @media (min-width: $phone) {
         h1 {
             font-size: 1.5rem;
         }
     }
 
-    @media (min-width: 540px) {
+    @media (min-width: $tablet) {
         h1 {
             font-size: 2rem;
         }
     }
 
-    @media (min-width: 720px) {
+    @media (min-width: $desktop) {
         flex-direction: row;
         justify-content: center;
 
