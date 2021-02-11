@@ -20,11 +20,9 @@ const PageLayout: FC<PageLayoutProps> = ({ children, title }) => {
 
     return <div className={`page ${darkThemeActive ? 'dark' : ''}`}>
         <title>{`${title} | Luke Codewalker`}</title>
-        <div className="theme-toggle">
-            <label htmlFor="dark-theme">{darkThemeActive ? 'Dark' : 'Light'} Theme
-                <input type="checkbox" name="dark-theme" id="dark-theme" checked={darkThemeActive} onChange={() => setDarkThemeActive(!darkThemeActive)} />
-            </label>
-        </div>
+        <label className="theme-toggle" htmlFor="dark-theme" title={`Switch to ${darkThemeActive ? 'light' : 'dark'} theme`}>{darkThemeActive ? '🌞' : '🌛'}
+            <input type="checkbox" name="dark-theme" id="dark-theme" checked={darkThemeActive} onChange={() => setDarkThemeActive(!darkThemeActive)} />
+        </label>
         {children}
     </div>
 }
