@@ -44,6 +44,10 @@ $knob-size: 1em;
             text-decoration: underline;
             cursor: pointer;
             margin-right: 2rem;
+
+            option {
+                color: $light-text-color;
+            }
         }
 
         .theme-toggle {
