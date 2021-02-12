@@ -25,37 +25,57 @@ $knob-size: 1em;
         }
     }
 
-    .theme-toggle {
-        display: block;
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        width: $toggle-width;
-        text-align: right;
-        border: 1px solid var(--text-color);
-        cursor: pointer;
-        border-radius: $knob-size;
+    header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
 
-        @media (min-width: $desktop-xl) {
-            font-size: 1.5rem;
+        @media (min-width: $desktop) {
+            justify-content: flex-end;
+            margin-bottom: 0;
         }
 
-        input {
-            display: none;
+        .locale-select {
+            background: none;
+            border: none;
+            font-family: inherit;
+            font-size: inherit;
+            color: inherit;
+            text-decoration: underline;
+            cursor: pointer;
+            margin-right: 2rem;
         }
 
-        &::before {
-            content: "";
+        .theme-toggle {
+            position: relative;
             display: block;
-            width: $knob-size;
-            height: $knob-size;
-            border-radius: 100%;
-            background-color: var(--text-color);
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translate($edge-width, -50%);
-            transition: transform 0.3s;
+            width: $toggle-width;
+            text-align: right;
+            border: 1px solid var(--text-color);
+            cursor: pointer;
+            border-radius: $knob-size;
+
+            @media (min-width: $desktop-xl) {
+                font-size: 1.5rem;
+            }
+
+            input {
+                display: none;
+            }
+
+            &::before {
+                content: "";
+                display: block;
+                width: $knob-size;
+                height: $knob-size;
+                border-radius: 100%;
+                background-color: var(--text-color);
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translate($edge-width, -50%);
+                transition: transform 0.3s;
+            }
         }
     }
 }

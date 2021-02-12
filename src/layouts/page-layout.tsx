@@ -6,23 +6,29 @@ interface PageLayoutProps {
 }
 
 enum Settings {
-    DARK_THEME_ON = 'darkThemeOn'
+    DARK_THEME_ON = 'darkThemeOn',
+    LOCALE = 'locale',
 }
 
 export type Locale = 'de-DE' | 'en-US';
 
-export const LocaleContext = createContext<Locale>('de-DE');
+const defaultLocale: Locale = 'en-US';
+
+export const LocaleContext = createContext<Locale>(defaultLocale);
 
 const PageLayout: FC<PageLayoutProps> = ({ children, title }) => {
     const [darkThemeActive, setDarkThemeActive] = useState<boolean>(true);
-    const [locale, setLocale] = useState<Locale>('de-DE');
+    const [locale, setLocale] = useState<Locale>(defaultLocale);
 
     useEffect(() => {
         if (typeof window === 'undefined') {
             return;
         }
-        const savedPreference = JSON.parse(window.localStorage.getItem(Settings.DARK_THEME_ON));
-        setDarkThemeActive(savedPreference ?? window.matchMedia('(prefers-color-scheme: dark)').matches);
+        const savedThemePreference = JSON.parse(window.localStorage.getItem(Settings.DARK_THEME_ON));
+        setDarkThemeActive(savedThemePreference ?? window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+        const savedLocalePreference = JSON.parse(window.localStorage.getItem(Settings.LOCALE));
+        setLocale(savedLocalePreference ?? defaultLocale);
     }, []);
 
     const toggleThemePreference = () => {
@@ -33,16 +39,28 @@ const PageLayout: FC<PageLayoutProps> = ({ children, title }) => {
         }
     }
 
+    const changeLocale = e => {
+        const newLocale = e.target.value;
+        setLocale(newLocale);
 
+        if (typeof window !== 'undefined') {
+            window.localStorage.setItem(Settings.LOCALE, JSON.stringify(newLocale));
+        }
+    }
 
     return <div className={`page ${darkThemeActive ? 'dark' : ''}`}>
         <LocaleContext.Provider value={locale}>
             <title>{`${title} | Luke Codewalker`}</title>
-            <button onClick={() => setLocale(locale === 'de-DE' ? 'en-US' : 'de-DE')}>toggle locale</button>
+            <header>
+                <select className="locale-select" name="locale" id="locale" value={locale} onChange={changeLocale} >
+                    <option value="en-US">English</option>
+                    <option value="de-DE">Deutsch</option>
+                </select>
 
-            <label className="theme-toggle" htmlFor="dark-theme" title={`Switch to ${darkThemeActive ? 'light' : 'dark'} theme`}>{darkThemeActive ? '🌞' : '🌛'}
-                <input type="checkbox" name="dark-theme" id="dark-theme" checked={darkThemeActive} onChange={toggleThemePreference} />
-            </label>
+                <label className="theme-toggle" htmlFor="dark-theme" title={`Switch to ${darkThemeActive ? 'light' : 'dark'} theme`}>{darkThemeActive ? '🌞' : '🌛'}
+                    <input type="checkbox" name="dark-theme" id="dark-theme" checked={darkThemeActive} onChange={toggleThemePreference} />
+                </label>
+            </header>
             {children}
         </LocaleContext.Provider>
     </div>
