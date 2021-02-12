@@ -1,4 +1,4 @@
-import React, { createContext, FC, useEffect, useState } from "react";
+import React, { createContext, FC, useState } from "react";
 import "./page-layout.scss";
 
 interface PageLayoutProps {

@@ -4,7 +4,6 @@ module.exports = {
   siteMetadata: {
     title: "luke-codewalker.com",
   },
-  flags: { DEV_SSR: false },
   plugins: [
     {
       resolve: "gatsby-source-contentful",
