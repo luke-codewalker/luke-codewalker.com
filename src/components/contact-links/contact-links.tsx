@@ -1,20 +1,24 @@
 import { graphql, useStaticQuery } from "gatsby";
-import React, { FC } from "react"
+import React, { FC, useContext } from "react"
 import { ContentfulRichTextGatsbyReference, renderRichText, RenderRichTextData } from "gatsby-source-contentful/rich-text";
 import { INLINES } from '@contentful/rich-text-types';
 import "./contact-list.scss";
+import { Locale, LocaleContext } from "../../layouts/page-layout";
 
 type IconLinkData = {
   allContentfulIconLink: {
     nodes: {
-      iconName: string
+      iconName: string;
       linkText: RenderRichTextData<ContentfulRichTextGatsbyReference>;
       order: number;
+      node_locale: Locale;
     }[]
   }
 }
 
 const ContactLinks: FC = () => {
+  const currentLocale = useContext(LocaleContext);
+
   const data = useStaticQuery<IconLinkData>(graphql`
     query IconLinkQuery {
       allContentfulIconLink {
@@ -24,12 +28,13 @@ const ContactLinks: FC = () => {
           linkText {
             raw
           }
+          node_locale
         }
       }
     }
     `)
 
-  const { nodes: links } = data.allContentfulIconLink;
+  const links = data.allContentfulIconLink.nodes.filter(node => node.node_locale === currentLocale);
 
   return (
     <ul className="contact-list">
