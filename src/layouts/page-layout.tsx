@@ -12,24 +12,22 @@ enum Settings {
 
 export type Locale = 'de-DE' | 'en-US';
 
-const defaultLocale: Locale = 'en-US';
+const initialLocale: Locale = typeof window !== 'undefined' ? JSON.parse(window.localStorage.getItem(Settings.LOCALE)) : 'en-US';
+export const LocaleContext = createContext<Locale>(initialLocale);
 
-export const LocaleContext = createContext<Locale>(defaultLocale);
+let initialTheme = false;
+if (typeof window !== 'undefined') {
+    const savedThemePreference = JSON.parse(window.localStorage.getItem(Settings.DARK_THEME_ON));
+    if (savedThemePreference !== null) {
+        initialTheme = savedThemePreference;
+    } else {
+        initialTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+};
 
 const PageLayout: FC<PageLayoutProps> = ({ children, title }) => {
-    const [darkThemeActive, setDarkThemeActive] = useState<boolean>(true);
-    const [locale, setLocale] = useState<Locale>(defaultLocale);
-
-    useEffect(() => {
-        if (typeof window === 'undefined') {
-            return;
-        }
-        const savedThemePreference = JSON.parse(window.localStorage.getItem(Settings.DARK_THEME_ON));
-        setDarkThemeActive(savedThemePreference ?? window.matchMedia('(prefers-color-scheme: dark)').matches);
-
-        const savedLocalePreference = JSON.parse(window.localStorage.getItem(Settings.LOCALE));
-        setLocale(savedLocalePreference ?? defaultLocale);
-    }, []);
+    const [darkThemeActive, setDarkThemeActive] = useState<boolean>(initialTheme);
+    const [locale, setLocale] = useState<Locale>(initialLocale);
 
     const toggleThemePreference = () => {
         setDarkThemeActive(!darkThemeActive);
