@@ -7,11 +7,17 @@ export interface LocaleSwitchProps {
     onLocaleChange: (locale: Locale) => void
 }
 
-const LocaleSwitch: FC<LocaleSwitchProps> = ({ locale, onLocaleChange }) => (
-    <select className="locale-select" name="locale" id="locale" value={locale} onChange={e => onLocaleChange(e.target.value as Locale)} >
-        <option value="de-DE">Deutsch</option>
-        <option value="en-US">English</option>
-    </select>
-);
+const LocaleSwitch: FC<LocaleSwitchProps> = ({ locale, onLocaleChange }) => {
+    const localeToSwitchTo: Locale = locale === 'de-DE' ? 'en-US' : 'de-DE';
+    const localeLabel = locale === 'de-DE' ? ' English?' : 'Deutsch?';
+    return (
+        <button className="locale-switch" onClick={() => onLocaleChange(localeToSwitchTo)}>
+            {
+                localeLabel
+            }
+        </button>
+
+    )
+};
 
 export default LocaleSwitch;
