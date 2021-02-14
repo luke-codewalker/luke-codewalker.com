@@ -1,7 +1,8 @@
 import { useStaticQuery, graphql } from "gatsby";
 import { RenderRichTextData, ContentfulRichTextGatsbyReference, renderRichText } from "gatsby-source-contentful/rich-text";
 import React, { FC, useContext, useState } from "react";
-import { Locale, LocaleContext } from "../../layouts/page-layout";
+import { LocaleContext } from "../../layouts/page-layout";
+import { Locale } from "../../utils/translate";
 import "./bio.scss";
 
 type BioData = {

@@ -1,7 +1,9 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React, { FC, useContext } from "react";
-import { Locale, LocaleContext } from "../../layouts/page-layout";
+import { LocaleContext } from "../../layouts/page-layout";
+import { Locale } from "../../utils/translate";
 import ContactLinks from "../contact-links/contact-links";
+import ProfilePicture from "../profile-picture/profile-picture";
 import ScramblingMarkup from "../scrambling-markup/scrambling-markup";
 import "./hero.scss";
 
@@ -30,11 +32,7 @@ const Hero: FC = () => {
     const { tagline } = data.allContentfulTagline.nodes.find(node => node.node_locale === currentLocale);
 
     return <article className="hero">
-        <picture className="profile-picture">
-            <source media="(min-width: 720px)" srcSet="images/profile_l.JPG" />
-            <source media="(min-width: 420px)" srcSet="images/profile_m.JPG" />
-            <img src="images/profile_s.JPG" alt="Profile Picture of Luke Codewalker" />
-        </picture>
+        <ProfilePicture></ProfilePicture>
         <section className="info">
             <h1 className="headline"><ScramblingMarkup tagName="h1" innerText="Hello World"></ScramblingMarkup></h1>
             <p className="tagline">{tagline}</p>

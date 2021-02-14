@@ -3,7 +3,8 @@ import React, { FC, useContext } from "react"
 import { ContentfulRichTextGatsbyReference, renderRichText, RenderRichTextData } from "gatsby-source-contentful/rich-text";
 import { INLINES } from '@contentful/rich-text-types';
 import "./contact-list.scss";
-import { Locale, LocaleContext } from "../../layouts/page-layout";
+import { LocaleContext } from "../../layouts/page-layout";
+import { Locale } from "../../utils/translate";
 
 type IconLinkData = {
   allContentfulIconLink: {

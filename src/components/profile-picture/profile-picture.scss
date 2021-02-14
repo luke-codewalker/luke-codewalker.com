@@ -1,0 +1,30 @@
+@import "../../styles/variables";
+
+.profile-picture-wrapper {
+    position: relative;
+    width: 50%;
+    min-height: 120px;
+    min-width: 120px;
+    margin: 0 auto;
+
+    @media (min-width: $desktop) {
+        width: 320px;
+        margin: 0 0 0 auto;
+    }
+}
+
+.profile-picture {
+    display: block;
+    aspect-ratio: 1 / 1;
+}
+
+.profile-picture img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.status-badge {
+    position: absolute;
+    right: 0;
+    bottom: 5%;
+}

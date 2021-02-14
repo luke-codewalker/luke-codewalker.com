@@ -1,6 +1,7 @@
 import React, { createContext, FC, useEffect, useState } from "react";
 import LocaleSwitch from "../components/locale-switch/locale-switch";
 import ThemeToggle from "../components/theme-toggle/theme-toggle";
+import { Locale } from "../utils/translate";
 import "./page-layout.scss";
 
 interface PageLayoutProps {
@@ -11,7 +12,6 @@ enum Settings {
     DARK_THEME_ON = 'darkThemeOn',
 }
 
-export type Locale = 'de-DE' | 'en-US';
 
 const defaultLocale: Locale = 'de-DE';
 export const LocaleContext = createContext<Locale>(defaultLocale);
