@@ -1,4 +1,6 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { createContext, FC, useEffect, useState } from "react";
+import LocaleSwitch from "../components/locale-switch/locale-switch";
+import ThemeToggle from "../components/theme-toggle/theme-toggle";
 import "./page-layout.scss";
 
 interface PageLayoutProps {
@@ -6,18 +8,29 @@ interface PageLayoutProps {
 }
 
 enum Settings {
-    DARK_THEME_ON = 'darkThemeOn'
+    DARK_THEME_ON = 'darkThemeOn',
 }
+
+export type Locale = 'de-DE' | 'en-US';
+
+const defaultLocale: Locale = 'de-DE';
+export const LocaleContext = createContext<Locale>(defaultLocale);
 
 const PageLayout: FC<PageLayoutProps> = ({ children, title }) => {
     const [darkThemeActive, setDarkThemeActive] = useState<boolean>(true);
+    const [locale, setLocale] = useState<Locale>(defaultLocale);
 
     useEffect(() => {
-        if (typeof window === 'undefined') {
-            return;
-        }
-        const savedPreference = JSON.parse(window.localStorage.getItem(Settings.DARK_THEME_ON));
-        setDarkThemeActive(savedPreference ?? window.matchMedia('(prefers-color-scheme: dark)').matches);
+        let initialTheme = false;
+        if (typeof window !== 'undefined') {
+            const savedThemePreference = JSON.parse(window.localStorage.getItem(Settings.DARK_THEME_ON));
+            if (savedThemePreference !== null) {
+                initialTheme = savedThemePreference;
+            } else {
+                initialTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            }
+        };
+        setDarkThemeActive(initialTheme);
     }, []);
 
     const toggleThemePreference = () => {
@@ -28,15 +41,22 @@ const PageLayout: FC<PageLayoutProps> = ({ children, title }) => {
         }
     }
 
+    const changeLocale = (newLocale: Locale) => {
+        setLocale(newLocale);
+    }
 
-
-    return <div className={`page ${darkThemeActive ? 'dark' : ''}`}>
-        <title>{`${title} | Luke Codewalker`}</title>
-        <label className="theme-toggle" htmlFor="dark-theme" title={`Switch to ${darkThemeActive ? 'light' : 'dark'} theme`}>{darkThemeActive ? '🌞' : '🌛'}
-            <input type="checkbox" name="dark-theme" id="dark-theme" checked={darkThemeActive} onChange={toggleThemePreference} />
-        </label>
-        {children}
-    </div>
+    return (
+        <LocaleContext.Provider value={locale}>
+            <div className={`page ${darkThemeActive ? 'dark' : ''}`}>
+                <title>{`${title} | Luke Codewalker`}</title>
+                <header>
+                    <LocaleSwitch locale={locale} onLocaleChange={changeLocale}></LocaleSwitch>
+                    <ThemeToggle darkThemeActive={darkThemeActive} onThemePreferenceToggled={toggleThemePreference}></ThemeToggle>
+                </header>
+                {children}
+            </div>
+        </LocaleContext.Provider>
+    )
 }
 
 export default PageLayout;

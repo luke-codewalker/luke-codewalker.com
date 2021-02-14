@@ -14,7 +14,7 @@ type TechStackData = {
 const TechStack: FC = () => {
     const data = useStaticQuery<TechStackData>(graphql`
     query TechStackQuery {
-        allContentfulTechnology {
+        allContentfulTechnology(filter: {node_locale: {eq: "en-US"}}) {
           nodes {
             expertise
             name

@@ -26,24 +26,30 @@
         align-items: center;
     }
 
-    h1 {
-        font-family: monospace;
-        font-size: 1.25rem;
+    .headline {
+        font-size: 1.5rem;
         cursor: pointer;
+        margin-bottom: 0;
 
         .code {
             color: var(--accent-color);
         }
     }
 
+    .tagline {
+        font-size: 1.25rem;
+        margin-top: 0;
+        text-align: center;
+    }
+
     @media (min-width: $phone) {
-        h1 {
+        .headline {
             font-size: 1.5rem;
         }
     }
 
     @media (min-width: $tablet) {
-        h1 {
+        .headline {
             font-size: 2rem;
         }
     }
@@ -55,6 +61,10 @@
 
         .info {
             display: block;
+        }
+
+        .tagline {
+            text-align: left;
         }
 
         .profile-picture {

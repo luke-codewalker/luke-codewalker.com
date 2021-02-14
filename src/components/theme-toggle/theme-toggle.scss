@@ -1,0 +1,44 @@
+@import "../../styles/variables";
+
+$edge-width: 0.125em;
+$toggle-width: 2.75em;
+$knob-size: 1em;
+
+.theme-toggle {
+    position: relative;
+    display: block;
+    width: $toggle-width;
+    text-align: right;
+    background-color: var(--text-color);
+    cursor: pointer;
+    border-radius: $knob-size;
+
+    @media (min-width: $desktop-xl) {
+        font-size: 1.5rem;
+    }
+
+    input {
+        display: none;
+    }
+
+    &::before {
+        content: "";
+        display: block;
+        width: $knob-size;
+        height: $knob-size;
+        border-radius: 100%;
+        background-color: var(--bg-color);
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translate($edge-width, -50%);
+        transition: transform 0.3s;
+    }
+
+    &--dark {
+        text-align: left;
+        &::before {
+            transform: translate($toggle-width - $knob-size - $edge-width * 2, -50%);
+        }
+    }
+}
