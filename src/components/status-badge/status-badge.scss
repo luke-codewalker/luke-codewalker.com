@@ -1,0 +1,44 @@
+@import "../../styles//variables";
+
+.status-badge {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.6rem;
+    padding: 0 8px;
+    border-radius: 1em;
+    border: 1px solid $light-text-color;
+    color: $light-text-color;
+    background-color: $light-bg-color;
+
+    @media (min-width: $tablet) {
+        font-size: 0.8rem;
+    }
+
+    @media (min-width: $desktop) {
+        font-size: 1rem;
+    }
+
+    .location {
+        position: relative;
+        text-decoration: none;
+        margin: 2px;
+
+        .icon {
+            font-size: 1.5em;
+            display: inline-block;
+            transition: transform 0.3s;
+            color: var(--accent-color);
+
+            @media (min-width: $desktop-xl) {
+                transform: scale(1.6) rotate(33deg) translate(2px, -12px);
+            }
+        }
+    }
+
+    &:hover {
+        .icon {
+            transform: scale(1) rotate(0) translate(0, 0);
+        }
+    }
+}
