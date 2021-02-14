@@ -1,0 +1,16 @@
+@import "../../styles/variables";
+
+.locale-select {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-right: 2rem;
+
+    option {
+        color: $light-text-color;
+    }
+}

@@ -1,4 +1,5 @@
 import React, { createContext, FC, useEffect, useState } from "react";
+import LocaleSwitch from "../components/locale-switch/locale-switch";
 import ThemeToggle from "../components/theme-toggle/theme-toggle";
 import "./page-layout.scss";
 
@@ -8,7 +9,6 @@ interface PageLayoutProps {
 
 enum Settings {
     DARK_THEME_ON = 'darkThemeOn',
-    LOCALE = 'locale',
 }
 
 export type Locale = 'de-DE' | 'en-US';
@@ -41,8 +41,7 @@ const PageLayout: FC<PageLayoutProps> = ({ children, title }) => {
         }
     }
 
-    const changeLocale = e => {
-        const newLocale: Locale = e.target.value;
+    const changeLocale = (newLocale: Locale) => {
         setLocale(newLocale);
     }
 
@@ -51,11 +50,7 @@ const PageLayout: FC<PageLayoutProps> = ({ children, title }) => {
             <div className={`page ${darkThemeActive ? 'dark' : ''}`}>
                 <title>{`${title} | Luke Codewalker`}</title>
                 <header>
-                    <select className="locale-select" name="locale" id="locale" value={locale} onChange={changeLocale} >
-                        <option value="de-DE">Deutsch</option>
-                        <option value="en-US">English</option>
-                    </select>
-
+                    <LocaleSwitch locale={locale} onLocaleChange={changeLocale}></LocaleSwitch>
                     <ThemeToggle darkThemeActive={darkThemeActive} onThemePreferenceToggled={toggleThemePreference}></ThemeToggle>
                 </header>
                 {children}
