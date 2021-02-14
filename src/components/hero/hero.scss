@@ -13,9 +13,10 @@
     }
 
     .headline {
-        font-size: 1.5rem;
+        font-size: 1.33rem;
         cursor: pointer;
-        margin-bottom: 0;
+        margin-bottom: 1rem;
+        text-align: center;
 
         .code {
             color: var(--accent-color);
@@ -49,7 +50,12 @@
             display: block;
         }
 
-        .tagline {
+        .headline {
+            margin-bottom: 0;
+        }
+
+        .tagline,
+        .headline {
             text-align: left;
         }
     }
