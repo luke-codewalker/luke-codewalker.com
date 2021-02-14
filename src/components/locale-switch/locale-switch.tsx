@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Locale } from "../../layouts/page-layout";
+import { Locale, TranslationKeys, translations } from "../../utils/translate";
 import "./locale-switch.scss";
 
 export interface LocaleSwitchProps {
@@ -11,7 +11,7 @@ const LocaleSwitch: FC<LocaleSwitchProps> = ({ locale, onLocaleChange }) => {
     const localeToSwitchTo: Locale = locale === 'de-DE' ? 'en-US' : 'de-DE';
     const localeLabel = locale === 'de-DE' ? ' English?' : 'Deutsch?';
     return (
-        <button className="locale-switch" onClick={() => onLocaleChange(localeToSwitchTo)}>
+        <button className="locale-switch" title={translations[TranslationKeys.LocaleSwitch][localeToSwitchTo]} onClick={() => onLocaleChange(localeToSwitchTo)}>
             {
                 localeLabel
             }

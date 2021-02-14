@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React, { FC, useContext } from "react";
-import { Locale, LocaleContext } from "../../layouts/page-layout";
+import { LocaleContext } from "../../layouts/page-layout";
+import { Locale } from "../../utils/translate";
 import "./status-badge.scss";
 
 type StatusData = {

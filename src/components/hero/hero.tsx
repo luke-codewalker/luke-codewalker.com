@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React, { FC, useContext } from "react";
-import { Locale, LocaleContext } from "../../layouts/page-layout";
+import { LocaleContext } from "../../layouts/page-layout";
+import { Locale } from "../../utils/translate";
 import ContactLinks from "../contact-links/contact-links";
 import ProfilePicture from "../profile-picture/profile-picture";
 import ScramblingMarkup from "../scrambling-markup/scrambling-markup";
