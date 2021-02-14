@@ -1,9 +1,5 @@
 @import "../styles/variables";
 
-$edge-width: 0.125em;
-$toggle-width: 2.75em;
-$knob-size: 1em;
-
 .page {
     position: relative;
     width: 100%;
@@ -17,13 +13,6 @@ $knob-size: 1em;
         --text-color: #{$dark-text-color};
         --accent-color: #{$dark-accent-color};
         --bg-color: #{$dark-bg-color};
-
-        .theme-toggle {
-            text-align: left;
-            &::before {
-                transform: translate($toggle-width - $knob-size - $edge-width * 2, -50%);
-            }
-        }
     }
 
     header {
@@ -48,38 +37,6 @@ $knob-size: 1em;
 
             option {
                 color: $light-text-color;
-            }
-        }
-
-        .theme-toggle {
-            position: relative;
-            display: block;
-            width: $toggle-width;
-            text-align: right;
-            border: 1px solid var(--text-color);
-            cursor: pointer;
-            border-radius: $knob-size;
-
-            @media (min-width: $desktop-xl) {
-                font-size: 1.5rem;
-            }
-
-            input {
-                display: none;
-            }
-
-            &::before {
-                content: "";
-                display: block;
-                width: $knob-size;
-                height: $knob-size;
-                border-radius: 100%;
-                background-color: var(--text-color);
-                position: absolute;
-                left: 0;
-                top: 50%;
-                transform: translate($edge-width, -50%);
-                transition: transform 0.3s;
             }
         }
     }

@@ -1,4 +1,5 @@
 import React, { createContext, FC, useEffect, useState } from "react";
+import ThemeToggle from "../components/theme-toggle/theme-toggle";
 import "./page-layout.scss";
 
 interface PageLayoutProps {
@@ -55,9 +56,7 @@ const PageLayout: FC<PageLayoutProps> = ({ children, title }) => {
                         <option value="en-US">English</option>
                     </select>
 
-                    <label className="theme-toggle" htmlFor="dark-theme" title={`Switch to ${darkThemeActive ? 'light' : 'dark'} theme`}>{darkThemeActive ? '🌞' : '🌛'}
-                        <input type="checkbox" name="dark-theme" id="dark-theme" checked={darkThemeActive} onChange={toggleThemePreference} />
-                    </label>
+                    <ThemeToggle darkThemeActive={darkThemeActive} onThemePreferenceToggled={toggleThemePreference}></ThemeToggle>
                 </header>
                 {children}
             </div>
