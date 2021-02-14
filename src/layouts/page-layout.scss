@@ -9,12 +9,6 @@
     padding: 20px;
     transition: background-color 0.25s;
 
-    &.dark {
-        --text-color: #{$dark-text-color};
-        --accent-color: #{$dark-accent-color};
-        --bg-color: #{$dark-bg-color};
-    }
-
     header {
         display: flex;
         justify-content: space-between;

@@ -45,9 +45,19 @@ const PageLayout: FC<PageLayoutProps> = ({ children, title }) => {
         setLocale(newLocale);
     }
 
+    // nee a reference to body tag for safe area styling and
+    // haven't found a better way to access it with e.g. a ref in Gatsby context
+    if (typeof document !== 'undefined') {
+        if (darkThemeActive) {
+            document.body.classList.add('dark');
+        } else {
+            document.body.classList.remove('dark');
+        }
+    }
+
     return (
         <LocaleContext.Provider value={locale}>
-            <div className={`page ${darkThemeActive ? 'dark' : ''}`}>
+            <div className="page">
                 <title>{`${title} | Luke Codewalker`}</title>
                 <header>
                     <LocaleSwitch locale={locale} onLocaleChange={changeLocale}></LocaleSwitch>

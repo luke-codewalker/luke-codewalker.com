@@ -1,17 +1,11 @@
 @import "./fonts";
 @import "./variables";
 
-:root {
-    --text-color: #{$light-text-color};
-    --accent-color: #{$light-accent-color};
-    --bg-color: #{$light-bg-color};
-}
-
 html {
     box-sizing: border-box;
-
     font-size: 18px;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
 }
 
 html,
@@ -26,6 +20,21 @@ body,
 *:before,
 *:after {
     box-sizing: inherit;
+}
+
+body {
+    --text-color: #{$light-text-color};
+    --accent-color: #{$light-accent-color};
+    --bg-color: #{$light-bg-color};
+
+    &.dark {
+        --text-color: #{$dark-text-color};
+        --accent-color: #{$dark-accent-color};
+        --bg-color: #{$dark-bg-color};
+    }
+
+    background-color: var(--bg-color);
+    transition: background-color 0.25s;
 }
 
 a {
