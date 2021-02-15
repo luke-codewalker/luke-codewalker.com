@@ -12,7 +12,6 @@ enum Settings {
     DARK_THEME_ON = 'darkThemeOn',
 }
 
-
 const defaultLocale: Locale = 'de-DE';
 export const LocaleContext = createContext<Locale>(defaultLocale);
 
@@ -49,9 +48,9 @@ const PageLayout: FC<PageLayoutProps> = ({ children, title }) => {
     // haven't found a better way to access it with e.g. a ref in Gatsby context
     if (typeof document !== 'undefined') {
         if (darkThemeActive) {
-            document.body.classList.add('dark');
+            document.body.classList.remove('light');
         } else {
-            document.body.classList.remove('dark');
+            document.body.classList.add('light');
         }
     }
 
