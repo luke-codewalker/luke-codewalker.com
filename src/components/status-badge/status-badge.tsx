@@ -39,7 +39,7 @@ const StatusBadge = ({ style }: StatusBadgeProps) => {
 
     const { statusText, statusIcon } = data.allContentfulStatus.nodes.find(node => node.node_locale === currentLocale) ?? defaultStatus;
     return (
-        <p style={style} className="status-badge"><span>{statusIcon}</span> {statusText}</p>
+        <p style={style} className="status-badge"><span className="status-badge__icon">{statusIcon}</span> <span className="status-badge__text">{statusText}</span></p>
     )
 }
 
