@@ -13,7 +13,7 @@ const ProfilePicture: FC = () => {
                 <source media="(min-width: 420px)" srcSet="images/profile_m.JPG" />
                 <img src="images/profile_s.JPG" alt={translations[TranslationKeys.ProfilePicture][currentLocale]} title={translations[TranslationKeys.ProfilePicture][currentLocale]} />
             </picture>
-            <StatusBadge></StatusBadge>
+            <StatusBadge style={{ position: 'absolute', bottom: '5%', right: 0 }}></StatusBadge>
         </div>
     )
 }
