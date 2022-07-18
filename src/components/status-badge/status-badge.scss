@@ -1,13 +1,13 @@
 @import "../../styles//variables";
 
 .status-badge {
-    position: relative;
     text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 0.6rem;
-    padding: 0 8px;
+    margin: 0;
+    padding: 4px 8px;
     border-radius: 1em;
     border: 1px solid $light-text-color;
     color: $light-text-color;
@@ -19,25 +19,5 @@
 
     @media (min-width: $desktop) {
         font-size: 1rem;
-    }
-
-    .icon {
-        margin: 2px;
-        font-size: 1.5em;
-        display: inline-block;
-        transition: transform 0.3s;
-        color: var(--accent-color);
-
-        @media (min-width: $desktop-xl) {
-            transform: scale(1.25) rotate(33deg) translate(4px, -8px);
-        }
-    }
-
-    &:hover {
-        color: $light-text-color;
-
-        .icon {
-            transform: scale(1) rotate(0) translate(0, 0);
-        }
     }
 }

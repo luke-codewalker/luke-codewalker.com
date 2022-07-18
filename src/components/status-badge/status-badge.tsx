@@ -8,34 +8,38 @@ type StatusData = {
     allContentfulStatus: {
         nodes: {
             statusText: string;
-            location: {
-                lat: number;
-                lon: number;
-            },
+            statusIcon: string;
             node_locale: Locale;
         }[]
     }
 }
 
-const StatusBadge: FC = () => {
+const defaultStatus: {
+    statusText: string;
+    statusIcon: string;
+} = {
+    statusIcon: '🤷‍♂️',
+    statusText: 'Status not found'
+}
+
+type StatusBadgeProps = { style: Record<string, any> }
+
+const StatusBadge = ({ style }: StatusBadgeProps) => {
     const currentLocale = useContext(LocaleContext);
     const data = useStaticQuery<StatusData>(graphql`
     query StatusQuery {
         allContentfulStatus {
             nodes {
               statusText
-              location {
-                lon
-                lat
-              }
+              statusIcon
               node_locale
             }
           }
       }`)
 
-    const { statusText, location } = data.allContentfulStatus.nodes.find(node => node.node_locale === currentLocale);
+    const { statusText, statusIcon } = data.allContentfulStatus.nodes.find(node => node.node_locale === currentLocale) ?? defaultStatus;
     return (
-        <a className="status-badge" href={`https://www.google.com/maps/search/?api=1&query=${location.lat},${location.lon}`} target="_blank" rel="noreferrer, noopener">{statusText}<i className="icon icon-location"></i></a>
+        <p style={style} className="status-badge"><span>{statusIcon}</span> {statusText}</p>
     )
 }
 
