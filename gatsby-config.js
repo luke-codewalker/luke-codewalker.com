@@ -12,6 +12,7 @@ module.exports = {
         spaceId: process.env.CF_SPACE_ID,
       },
     },
-    `gatsby-plugin-sass`
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-image`
   ],
 };
