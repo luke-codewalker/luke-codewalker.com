@@ -1,7 +1,7 @@
 export type Locale = 'de-DE' | 'en-US';
 
 export enum TranslationKeys {
-    LighThemeSwitch,
+    LightThemeSwitch,
     DarkThemeSwitch,
     LocaleSwitch,
     ProfilePicture
@@ -14,7 +14,7 @@ export type Translations = {
 }
 
 export const translations: Translations = {
-    [TranslationKeys.LighThemeSwitch]: {
+    [TranslationKeys.LightThemeSwitch]: {
         'de-DE': 'Helles Theme einstellen',
         'en-US': 'Switch to light theme'
     },
@@ -27,7 +27,7 @@ export const translations: Translations = {
         'de-DE': 'Seite auf Deutsch anzeigen'
     },
     [TranslationKeys.ProfilePicture]: {
-        'de-DE': 'Profilbild von Luke Codewalker: Schwarz-Weiß-Bild eines lachenden jungen Manns mit Locken.',
-        'en-US': 'Profile picture of Luke Codewalker: black and white photo of a smiling young man with curls.'
+        'de-DE': 'Profilbild von Luke Codewalker: Schwarz-Weiß-Bild eines lachenden Manns mit Locken.',
+        'en-US': 'Profile picture of Luke Codewalker: black and white photo of a smiling man with curls.'
     }
 }

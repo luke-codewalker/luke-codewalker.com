@@ -7,12 +7,14 @@ import Hero from "../components/hero/hero";
 import Bio from "../components/bio/bio";
 import TechStack from "../components/tech-stack/tech-stack";
 import { consoleGreetings } from "../utils/console-greetings";
+import { formatTitle } from '../utils/format-title';
+import { CustomHead } from '../components/head';
 
 const IndexPage: FC<PageProps> = () => {
   useEffect(() => consoleGreetings(), []);
 
   return (
-    <PageLayout title="Home">
+    <PageLayout>
       <main>
         <Hero></Hero>
         <div className="grid-container">
@@ -25,3 +27,8 @@ const IndexPage: FC<PageProps> = () => {
 }
 
 export default IndexPage
+
+
+export function Head() {
+  return <CustomHead title='Home'></CustomHead>
+}

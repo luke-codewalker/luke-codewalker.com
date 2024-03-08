@@ -11,7 +11,7 @@ export interface ThemeToggleProps {
 const ThemeToggle: FC<ThemeToggleProps> = ({ darkThemeActive, onThemePreferenceToggled }) => {
     const currentLocale = useContext(LocaleContext);
     return (
-        <label className={`theme-toggle ${darkThemeActive ? 'theme-toggle--dark' : ''}`} htmlFor="dark-theme" title={translations[darkThemeActive ? TranslationKeys.LighThemeSwitch : TranslationKeys.DarkThemeSwitch][currentLocale]}>{darkThemeActive ? '🌞' : '🌛'}
+        <label className={`theme-toggle ${darkThemeActive ? 'theme-toggle--dark' : ''}`} htmlFor="dark-theme" title={translations[darkThemeActive ? TranslationKeys.LightThemeSwitch : TranslationKeys.DarkThemeSwitch][currentLocale]}>{darkThemeActive ? '🌞' : '🌛'}
             <input type="checkbox" name="dark-theme" id="dark-theme" checked={darkThemeActive} onChange={onThemePreferenceToggled} />
         </label>
     )
