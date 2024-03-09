@@ -23,16 +23,6 @@ body,
 }
 
 body {
-    --text-color: #{$dark-text-color};
-    --accent-color: #{$dark-accent-color};
-    --bg-color: #{$dark-bg-color};
-
-    &.light {
-        --text-color: #{$light-text-color};
-        --accent-color: #{$light-accent-color};
-        --bg-color: #{$light-bg-color};
-    }
-
     background-color: var(--bg-color);
     transition: background-color 0.25s;
 }

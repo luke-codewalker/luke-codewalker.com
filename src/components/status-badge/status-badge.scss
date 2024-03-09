@@ -8,9 +8,9 @@
     font-size: 0.6rem;
     margin: 0;
     border-radius: 0.5em;
-    border: 1px solid $light-text-color;
-    color: $light-text-color;
-    background-color: $light-bg-color;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    background-color: var(--bg-color);
     overflow: hidden;
 
     @media (min-width: $tablet) {
@@ -23,7 +23,7 @@
 
     &__icon {
         padding: 4px;
-        background-color: $dark-bg-color;
+        background-color: var(--bg-color);
     }
 
     &__text {

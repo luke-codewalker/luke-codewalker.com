@@ -1,36 +1,26 @@
-import React, { createContext, ReactNode, useEffect, useState } from "react";
+import React, { createContext, ReactNode, StrictMode, useEffect, useState } from "react";
 import LocaleSwitch from "../components/locale-switch/locale-switch";
 import ThemeToggle from "../components/theme-toggle/theme-toggle";
 import { Locale } from "../utils/translate";
 import "./page-layout.scss";
+import { isDarkThemeActive, Settings } from '../utils/is-dark-theme-active';
+import { COLORS } from '../styles/colors';
 
 interface PageLayoutProps {
     children: ReactNode
-}
-
-enum Settings {
-    DARK_THEME_ON = 'darkThemeOn',
 }
 
 const defaultLocale: Locale = 'de-DE';
 export const LocaleContext = createContext<Locale>(defaultLocale);
 
 const PageLayout = ({ children }: PageLayoutProps) => {
-    const [darkThemeActive, setDarkThemeActive] = useState<boolean>(true);
+    const [darkThemeActive, setDarkThemeActive] = useState<boolean | undefined>(undefined);
     const [locale, setLocale] = useState<Locale>(defaultLocale);
 
     useEffect(() => {
-        let initialTheme = false;
-        if (typeof window !== 'undefined') {
-            const savedThemePreference = JSON.parse(window.localStorage.getItem(Settings.DARK_THEME_ON)!);
-            if (savedThemePreference !== null) {
-                initialTheme = savedThemePreference;
-            } else {
-                initialTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            }
-        };
-        setDarkThemeActive(initialTheme);
-    }, []);
+        // only change after rehydration to avoid errors
+        setDarkThemeActive(isDarkThemeActive())
+    }, [])
 
     const toggleThemePreference = () => {
         setDarkThemeActive(!darkThemeActive);
@@ -44,26 +34,25 @@ const PageLayout = ({ children }: PageLayoutProps) => {
         setLocale(newLocale);
     }
 
-    // nee a reference to body tag for safe area styling and
-    // haven't found a better way to access it with e.g. a ref in Gatsby context
-    if (typeof document !== 'undefined') {
-        if (darkThemeActive) {
-            document.body.classList.remove('light');
-        } else {
-            document.body.classList.add('light');
-        }
-    }
+    useEffect(() => {
+        const rootStyle = document.documentElement.style;
+        Object.keys(COLORS.light).forEach(key => {
+            rootStyle.setProperty(`--${key}-color`, darkThemeActive ? COLORS.dark[key] : COLORS.light[key])
+        })
+    }, [darkThemeActive])
 
     return (
-        <LocaleContext.Provider value={locale}>
-            <div className="page">
-                <header>
-                    <LocaleSwitch locale={locale} onLocaleChange={changeLocale}></LocaleSwitch>
-                    <ThemeToggle darkThemeActive={darkThemeActive} onThemePreferenceToggled={toggleThemePreference}></ThemeToggle>
-                </header>
-                {children}
-            </div>
-        </LocaleContext.Provider>
+        <StrictMode>
+            <LocaleContext.Provider value={locale}>
+                <div className="page">
+                    <header>
+                        <LocaleSwitch locale={locale} onLocaleChange={changeLocale}></LocaleSwitch>
+                        <ThemeToggle darkThemeActive={darkThemeActive} onThemePreferenceToggled={toggleThemePreference}></ThemeToggle>
+                    </header>
+                    {children}
+                </div>
+            </LocaleContext.Provider>
+        </StrictMode>
     )
 }
 

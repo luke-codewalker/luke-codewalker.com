@@ -12,6 +12,7 @@ $knob-size: 1em;
     background-color: var(--text-color);
     cursor: pointer;
     border-radius: $knob-size;
+    min-height: 1lh;
 
     @media (min-width: $desktop-xl) {
         font-size: 1.5rem;
@@ -37,6 +38,7 @@ $knob-size: 1em;
 
     &--dark {
         text-align: left;
+
         &::before {
             transform: translate($toggle-width - $knob-size - $edge-width * 2, -50%);
         }
